@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Airbnb — Your Complete Host Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6F0;
+    --warm-white: #FDF9F4;
+    --terracotta: #C1683A;
+    --terracotta-light: #D98B65;
+    --terracotta-dark: #9E4E25;
+    --sage: #7A8C6E;
+    --sage-light: #A3B394;
+    --caramel: #B8894A;
+    --caramel-light: #D4AA72;
+    --charcoal: #2E2B27;
+    --warm-gray: #6B6560;
+    --muted: #9C9490;
+    --border: #E8DDD3;
+    --shadow: rgba(46,43,39,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,246,240,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--terracotta);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--terracotta); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #F5EDE0 0%, #EDD9C0 50%, #E4C9A8 100%);
+    display: flex; align-items: center;
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(193,104,58,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-texture {
+    position: absolute; top: 0; right: 0; width: 55%; height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C1683A' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.6;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 600px; }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block;
+    width: 30px; height: 2px;
+    background: var(--terracotta);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--terracotta);
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: 2px solid var(--terracotta);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--terracotta); color: white; transform: translateY(-1px); }
+  .hero-stats {
+    margin-top: 3.5rem;
+    display: flex; gap: 2.5rem;
+    border-top: 1px solid rgba(193,104,58,0.2);
+    padding-top: 2rem;
+  }
+  .stat-item { }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTION SHELL ── */
+  section { padding: 90px 5%; }
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 0.75rem;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--charcoal);
+  }
+  .section-header p {
+    color: var(--warm-gray);
+    font-size: 1.05rem;
+    font-weight: 300;
+    margin-top: 0.75rem;
+    max-width: 540px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ── ROOM GUIDES ── */
+  #rooms { background: var(--warm-white); }
+
+  .rooms-tabs {
+    display: flex; justify-content: center; gap: 0.5rem;
+    flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .tab-btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warm-gray);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active, .tab-btn:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: white;
+  }
+
+  .room-panel { display: none; }
+  .room-panel.active { display: block; }
+
+  .room-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .room-intro {
+    background: var(--terracotta);
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .room-intro h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .room-intro p { color: rgba(255,255,255,0.85); font-size: 0.95rem; font-weight: 300; line-height: 1.8; }
+  .room-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  .room-products {
+    background: white;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    align-content: start;
+  }
+
+  .product-card {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: var(--cream);
+  }
+  .product-card:hover {
+    box-shadow: 0 8px 28px var(--shadow);
+    transform: translateY(-3px);
+  }
+  .product-img {
+    width: 100%; height: 110px;
+    object-fit: cover;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #F0E6D8, #E4D0B8);
+  }
+  .product-info { padding: 0.75rem; }
+  .product-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+  .product-store {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.4rem;
+  }
+  .product-link {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── TOP PICKS GRID ── */
+  #picks { background: var(--cream); }
+
+  .picks-category { margin-bottom: 3.5rem; }
+  .picks-category-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .picks-category-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--charcoal);
+  }
+  .picks-category-header .cat-icon { font-size: 1.5rem; }
+
+  .picks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .pick-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .pick-card:hover {
+    box-shadow: 0 10px 32px var(--shadow);
+    transform: translateY(-4px);
+  }
+  .pick-emoji {
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, #F5EDE0, #EDD9C0);
+  }
+  .pick-body { padding: 1rem; }
+  .pick-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+  .pick-desc {
+    font-size: 0.78rem;
+    color: var(--warm-gray);
+    font-weight: 300;
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .pick-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .pick-store {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .pick-arrow {
+    width: 26px; height: 26px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* ── CHECKLIST ── */
+  #checklist { background: linear-gradient(160deg, #EDD9C0 0%, #E4CFAE 100%); }
+
+  .checklist-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .checklist-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(46,43,39,0.08);
+  }
+  .checklist-card-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border);
+  }
+  .checklist-card-header .c-icon { font-size: 1.5rem; }
+  .checklist-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+  .checklist-item {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.15s;
+    border-radius: 4px;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .checklist-item:hover { background: var(--cream); }
+  .check-box {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-radius: 3px;
+    flex-shrink: 0; margin-top: 2px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+    font-size: 0.65rem;
+    color: transparent;
+  }
+  .checklist-item.checked .check-box {
+    background: var(--sage);
+    border-color: var(--sage);
+    color: white;
+  }
+  .check-text {
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    line-height: 1.4;
+    transition: color 0.2s;
+  }
+  .checklist-item.checked .check-text {
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+  .checklist-progress {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .progress-bar-wrap {
+    background: var(--border);
+    border-radius: 50px;
+    height: 6px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: flex; justify-content: space-between;
+  }
+
+  /* ── TIPS BANNER ── */
+  .tips-section {
+    background: var(--charcoal);
+    padding: 80px 5%;
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .tip-card { text-align: center; }
+  .tip-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--terracotta-light);
+    opacity: 0.5;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .tip-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+  .tip-text { font-size: 0.88rem; color: rgba(255,255,255,0.55); font-weight: 300; line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #231F1B;
+    padding: 3rem 5%;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--terracotta-light);
+    margin-bottom: 0.75rem;
+  }
+  footer p {
+    color: rgba(255,255,255,0.35);
+    font-size: 0.8rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--terracotta-light); text-decoration: none; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.25s; }
+  .hero p { animation-delay: 0.4s; }
+  .hero-ctas { animation-delay: 0.5s; }
+  .hero-stats { animation-delay: 0.6s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .room-grid { grid-template-columns: 1fr; }
+    .room-products { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 1.5rem; }
+  }
+  @media (max-width: 500px) {
+    .room-products { grid-template-columns: 1fr; }
+    .picks-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">How to Airbnb</div>
+  <div class="nav-links">
+    <a href="#rooms">Room Guides</a>
+    <a href="#picks">Top Picks</a>
+    <a href="#checklist">Checklist</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Complete Host Guide</div>
+    <h1>Make your home a <em>5-star</em> Airbnb</h1>
+    <p>Everything you need to furnish and style your full home rental — curated product picks, room-by-room guides, and a setup checklist to get you hosting fast.</p>
+    <div class="hero-ctas">
+      <a href="#rooms" class="btn-primary">Explore Room Guides</a>
+      <a href="#picks" class="btn-secondary">Shop Top Picks</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Room Guides</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Curated Products</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">40+</div>
+        <div class="stat-label">Checklist Items</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOM GUIDES -->
+<section id="rooms">
+  <div class="section-header">
+    <div class="section-tag">Room by Room</div>
+    <h2>Design Every Space to <em style="font-style:italic; color:var(--terracotta)">Impress</em></h2>
+    <p>Tap a room to see curated furnishings and styling tips for full apartment hosting.</p>
+  </div>
+
+  <div class="rooms-tabs">
+    <button class="tab-btn active" onclick="showRoom('bedroom')">🛏 Bedroom</button>
+    <button class="tab-btn" onclick="showRoom('living')">🛋 Living Room</button>
+    <button class="tab-btn" onclick="showRoom('kitchen')">🍳 Kitchen</button>
+  </div>
+
+  <!-- BEDROOM -->
+  <div class="room-panel active" id="room-bedroom">
+    <div class="room-grid">
+      <div class="room-intro">
+        <div class="room-icon">🛏</div>
+        <h3>The Bedroom</h3>
+        <p>Guests judge a listing by how well they sleep. Invest in a quality mattress, hotel-grade linens, and blackout curtains — these pay for themselves in 5-star reviews. Keep it minimal, warm, and serene.</p>
+        <br>
+        <p style="font-size:0.8rem; opacity:0.75">💡 <strong>Pro tip:</strong> Add a luggage rack and bedside charging station — small details that earn huge praise.</p>
+      </div>
+      <div class="room-products">
+        <a href="https://www.amazon.com/s?k=hotel+quality+mattress+topper" target="_blank" class="product-card">
+          <div class="product-img">🛏</div>
+          <div class="product-info">
+            <div class="product-name">Hotel Mattress Topper</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=hotel+white+cotton+sheets+queen" target="_blank" class="product-card">
+          <div class="product-img">🏨</div>
+          <div class="product-info">
+            <div class="product-name">Crisp White Sheet Set</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.target.com/s?searchTerm=blackout+curtains+bedroom" target="_blank" class="product-card">
+          <div class="product-img">🌙</div>
+          <div class="product-info">
+            <div class="product-name">Blackout Curtains</div>
+            <div class="product-store">Target</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.ikea.com/us/en/search/?q=beside+lamp+warm" target="_blank" class="product-card">
+          <div class="product-img">💡</div>
+          <div class="product-info">
+            <div class="product-name">Warm Bedside Lamp</div>
+            <div class="product-store">IKEA</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=luggage+rack+foldable+wood" target="_blank" class="product-card">
+          <div class="product-img">🧳</div>
+          <div class="product-info">
+            <div class="product-name">Folding Luggage Rack</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=usb+bedside+charging+station" target="_blank" class="product-card">
+          <div class="product-img">🔌</div>
+          <div class="product-info">
+            <div class="product-name">Bedside Charging Hub</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVING ROOM -->
+  <div class="room-panel" id="room-living">
+    <div class="room-grid">
+      <div class="room-intro">
+        <div class="room-icon">🛋</div>
+        <h3>The Living Room</h3>
+        <p>This is where guests relax and unwind. A comfortable sofa, good lighting, and a smart TV make all the difference. Layer in textures — throw blankets, pillows, a rug — to make the space feel curated and lived-in.</p>
+        <br>
+        <p style="font-size:0.8rem; opacity:0.75">💡 <strong>Pro tip:</strong> A Bluetooth speaker and a coffee table book about your city add a thoughtful local touch.</p>
+      </div>
+      <div class="room-products">
+        <a href="https://www.wayfair.com/furniture/sb1/sofas-c413892.html" target="_blank" class="product-card">
+          <div class="product-img">🛋</div>
+          <div class="product-info">
+            <div class="product-name">Neutral Sectional Sofa</div>
+            <div class="product-store">Wayfair</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=jute+area+rug+living+room" target="_blank" class="product-card">
+          <div class="product-img">🪵</div>
+          <div class="product-info">
+            <div class="product-name">Natural Jute Area Rug</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.target.com/s?searchTerm=smart+tv+43+inch" target="_blank" class="product-card">
+          <div class="product-img">📺</div>
+          <div class="product-info">
+            <div class="product-name">Smart TV (43")</div>
+            <div class="product-store">Target</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=throw+blanket+chunky+knit+neutral" target="_blank" class="product-card">
+          <div class="product-img">🧶</div>
+          <div class="product-info">
+            <div class="product-name">Chunky Knit Throw</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.ikea.com/us/en/search/?q=floor+lamp+living+room" target="_blank" class="product-card">
+          <div class="product-img">🕯</div>
+          <div class="product-info">
+            <div class="product-name">Arc Floor Lamp</div>
+            <div class="product-store">IKEA</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=bluetooth+speaker+home" target="_blank" class="product-card">
+          <div class="product-img">🔊</div>
+          <div class="product-info">
+            <div class="product-name">Bluetooth Speaker</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- KITCHEN -->
+  <div class="room-panel" id="room-kitchen">
+    <div class="room-grid">
+      <div class="room-intro">
+        <div class="room-icon">🍳</div>
+        <h3>The Kitchen</h3>
+        <p>Guests love cooking during longer stays. Stock essentials like good knives, pots, a coffee maker, and basic pantry items (oil, salt, pepper). A clean, functional kitchen earns top marks.</p>
+        <br>
+        <p style="font-size:0.8rem; opacity:0.75">💡 <strong>Pro tip:</strong> Leave a small basket with coffee, tea, and a welcome note — guests remember it every time.</p>
+      </div>
+      <div class="room-products">
+        <a href="https://www.amazon.com/s?k=drip+coffee+maker+airbnb" target="_blank" class="product-card">
+          <div class="product-img">☕</div>
+          <div class="product-info">
+            <div class="product-name">Drip Coffee Maker</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=knife+set+with+block" target="_blank" class="product-card">
+          <div class="product-img">🔪</div>
+          <div class="product-info">
+            <div class="product-name">Knife Block Set</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.target.com/s?searchTerm=dinnerware+set+white+4+piece" target="_blank" class="product-card">
+          <div class="product-img">🍽</div>
+          <div class="product-info">
+            <div class="product-name">White Dinnerware Set</div>
+            <div class="product-store">Target</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=nonstick+cookware+set" target="_blank" class="product-card">
+          <div class="product-img">🍳</div>
+          <div class="product-info">
+            <div class="product-name">Non-Stick Cookware</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=welcome+basket+tea+coffee+gift" target="_blank" class="product-card">
+          <div class="product-img">🎁</div>
+          <div class="product-info">
+            <div class="product-name">Welcome Basket Kit</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=dish+rack+countertop+stainless" target="_blank" class="product-card">
+          <div class="product-img">🧽</div>
+          <div class="product-info">
+            <div class="product-name">Countertop Dish Rack</div>
+            <div class="product-store">Amazon</div>
+            <div class="product-link">Shop Now →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP PICKS -->
+<section id="picks">
+  <div class="section-header">
+    <div class="section-tag">Editor's Picks</div>
+    <h2>Top Products for Any Airbnb</h2>
+    <p>The best-performing essentials across hundreds of host setups — all linkable and ready to order.</p>
+  </div>
+
+  <div style="max-width:1100px; margin:0 auto;">
+
+    <div class="picks-category">
+      <div class="picks-category-header">
+        <span class="cat-icon">✨</span>
+        <h3>Guest Experience Essentials</h3>
+      </div>
+      <div class="picks-grid">
+        <a href="https://www.amazon.com/s?k=hotel+white+towel+set+bulk" target="_blank" class="pick-card">
+          <div class="pick-emoji">🛁</div>
+          <div class="pick-body">
+            <div class="pick-name">Hotel-Style Towel Set</div>
+            <div class="pick-desc">Thick, white, washable — guests expect it</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=smart+lock+keyless+entry+door" target="_blank" class="pick-card">
+          <div class="pick-emoji">🔐</div>
+          <div class="pick-body">
+            <div class="pick-name">Smart Keyless Lock</div>
+            <div class="pick-desc">Self-check-in is a top guest priority</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=shampoo+conditioner+body+wash+dispenser+wall" target="_blank" class="pick-card">
+          <div class="pick-emoji">🚿</div>
+          <div class="pick-body">
+            <div class="pick-name">Shower Dispenser Set</div>
+            <div class="pick-desc">Refillable wall-mount, looks boutique</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=air+purifier+bedroom+quiet" target="_blank" class="pick-card">
+          <div class="pick-emoji">💨</div>
+          <div class="pick-body">
+            <div class="pick-name">Air Purifier</div>
+            <div class="pick-desc">Fresh-smelling space = 5-star reviews</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="picks-category">
+      <div class="picks-category-header">
+        <span class="cat-icon">🎨</span>
+        <h3>Decor & Ambiance</h3>
+      </div>
+      <div class="picks-grid">
+        <a href="https://www.amazon.com/s?k=boho+wall+art+neutral+canvas+print" target="_blank" class="pick-card">
+          <div class="pick-emoji">🖼</div>
+          <div class="pick-body">
+            <div class="pick-name">Neutral Canvas Prints</div>
+            <div class="pick-desc">Warm tones that photograph beautifully</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=faux+plant+potted+decor" target="_blank" class="pick-card">
+          <div class="pick-emoji">🌿</div>
+          <div class="pick-body">
+            <div class="pick-name">Faux Potted Plants</div>
+            <div class="pick-desc">Greenery without the maintenance</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=decorative+throw+pillows+neutral" target="_blank" class="pick-card">
+          <div class="pick-emoji">🛋</div>
+          <div class="pick-body">
+            <div class="pick-name">Decorative Pillows</div>
+            <div class="pick-desc">Layer textures for a styled look</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=led+string+lights+warm+indoor" target="_blank" class="pick-card">
+          <div class="pick-emoji">✨</div>
+          <div class="pick-body">
+            <div class="pick-name">Warm String Lights</div>
+            <div class="pick-desc">Instant cozy atmosphere</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="picks-category">
+      <div class="picks-category-header">
+        <span class="cat-icon">🧹</span>
+        <h3>Hosting Operations</h3>
+      </div>
+      <div class="picks-grid">
+        <a href="https://www.amazon.com/s?k=guest+welcome+book+binder" target="_blank" class="pick-card">
+          <div class="pick-emoji">📖</div>
+          <div class="pick-body">
+            <div class="pick-name">Guest Welcome Book</div>
+            <div class="pick-desc">WiFi, rules, local tips — all in one</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=extra+toilet+paper+organizer+bathroom" target="_blank" class="pick-card">
+          <div class="pick-emoji">🧻</div>
+          <div class="pick-body">
+            <div class="pick-name">TP Organizer Stand</div>
+            <div class="pick-desc">Always keep extras visible for guests</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=cleaning+caddy+organizer+supplies" target="_blank" class="pick-card">
+          <div class="pick-emoji">🧼</div>
+          <div class="pick-body">
+            <div class="pick-name">Cleaning Supply Caddy</div>
+            <div class="pick-desc">Speed up your turnover routine</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/s?k=label+maker+organization" target="_blank" class="pick-card">
+          <div class="pick-emoji">🏷</div>
+          <div class="pick-body">
+            <div class="pick-name">Label Maker</div>
+            <div class="pick-desc">Label drawers, remotes, outlets clearly</div>
+            <div class="pick-footer"><span class="pick-store">Amazon</span><span class="pick-arrow">→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS BANNER -->
+<div class="tips-section">
+  <div class="section-header" style="margin-bottom:3rem">
+    <div class="section-tag" style="color:var(--caramel-light)">Host Wisdom</div>
+    <h2 style="color:white">4 Rules of Great Hosting</h2>
+  </div>
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-number">01</div>
+      <div class="tip-title">First Impression = Listing Photos</div>
+      <div class="tip-text">Style your space before shooting. Natural light + neutral tones = more bookings. Hire a photographer once if possible.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-number">02</div>
+      <div class="tip-title">Comfort Over Decoration</div>
+      <div class="tip-text">A good mattress beats a designer lamp every time. Prioritize sleep quality, hot water, and fast WiFi above all else.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-number">03</div>
+      <div class="tip-title">Make Check-In Frictionless</div>
+      <div class="tip-text">Self-check-in with a smart lock, clear instructions, and a welcome message is the single best upgrade you can make.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-number">04</div>
+      <div class="tip-title">Stock for a Week-Long Stay</div>
+      <div class="tip-text">Extra towels, toilet paper, coffee, cooking oil. Guests on longer stays run out of basics — anticipate their needs.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="section-header">
+    <div class="section-tag">Before You List</div>
+    <h2>Your Complete Setup Checklist</h2>
+    <p>Check off every item to make sure your home is guest-ready. Progress saves in your session.</p>
+  </div>
+
+  <div class="checklist-columns">
+
+    <div class="checklist-card">
+      <div class="checklist-card-header">
+        <span class="c-icon">🛏</span>
+        <h3>Bedroom</h3>
+      </div>
+      <div id="cl-bedroom">
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Quality mattress or topper</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Fresh white sheet sets (2 per bed)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Pillows (2 per guest)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Duvet + duvet cover</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Blackout curtains</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Bedside table + lamp</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">USB charging station</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Luggage rack</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Mirror (full-length if possible)</span></div>
+      </div>
+      <div class="checklist-progress">
+        <div class="progress-text"><span id="prog-bedroom-text">0 of 9</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bedroom" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-card-header">
+        <span class="c-icon">🛋</span>
+        <h3>Living Room</h3>
+      </div>
+      <div id="cl-living">
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Comfortable sofa or seating</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Coffee table</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Smart TV + streaming</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Area rug</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Throw blankets + pillows</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Floor or table lamp</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Wall decor / artwork</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Fast WiFi router + instructions</span></div>
+      </div>
+      <div class="checklist-progress">
+        <div class="progress-text"><span id="prog-living-text">0 of 8</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-living" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-card-header">
+        <span class="c-icon">🍳</span>
+        <h3>Kitchen</h3>
+      </div>
+      <div id="cl-kitchen">
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Coffee maker + filters</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Pots, pans, and skillet</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Knife set</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Plates, bowls, glasses (x4 min)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Utensils + can opener</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Dish soap, sponge, towels</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Salt, pepper, oil, sugar</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Welcome tea/coffee basket</span></div>
+      </div>
+      <div class="checklist-progress">
+        <div class="progress-text"><span id="prog-kitchen-text">0 of 8</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-kitchen" style="width:0%"></div></div>
+      </div>
+    </div>
+
+    <div class="checklist-card">
+      <div class="checklist-card-header">
+        <span class="c-icon">🚿</span>
+        <h3>Bathroom & Operations</h3>
+      </div>
+      <div id="cl-bath">
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Towel set (bath + hand)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Shampoo, conditioner, body wash</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Extra toilet paper (4+ rolls)</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Hair dryer</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Smart lock / key box</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Guest welcome book / house guide</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">Smoke + CO detectors</span></div>
+        <div class="checklist-item" onclick="toggleCheck(this)"><div class="check-box">✓</div><span class="check-text">First aid kit</span></div>
+      </div>
+      <div class="checklist-progress">
+        <div class="progress-text"><span id="prog-bath-text">0 of 8</span></div>
+        <div class="progress-bar-wrap"><div class="progress-bar-fill" id="prog-bath" style="width:0%"></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">How to Airbnb</div>
+  <p>A curated guide for full-home hosts. All product links are suggestions — shop what fits your space and budget.<br>
+  Links to <a href="https://www.amazon.com" target="_blank">Amazon</a>, <a href="https://www.target.com" target="_blank">Target</a>, <a href="https://www.ikea.com" target="_blank">IKEA</a>, <a href="https://www.wayfair.com" target="_blank">Wayfair</a> & more.</p>
+</footer>
+
+<script>
+  // TABS
+  function showRoom(room) {
+    document.querySelectorAll('.room-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('room-' + room).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // CHECKLIST
+  const SECTIONS = {
+    bedroom: { id: 'cl-bedroom', bar: 'prog-bedroom', text: 'prog-bedroom-text' },
+    living:  { id: 'cl-living',  bar: 'prog-living',  text: 'prog-living-text'  },
+    kitchen: { id: 'cl-kitchen', bar: 'prog-kitchen', text: 'prog-kitchen-text' },
+    bath:    { id: 'cl-bath',    bar: 'prog-bath',    text: 'prog-bath-text'    },
+  };
+
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+    // find which section
+    for (const key in SECTIONS) {
+      const sec = SECTIONS[key];
+      const container = document.getElementById(sec.id);
+      if (container.contains(el)) {
+        const items = container.querySelectorAll('.checklist-item');
+        const done = container.querySelectorAll('.checklist-item.checked').length;
+        const total = items.length;
+        const pct = Math.round(done / total * 100);
+        document.getElementById(sec.bar).style.width = pct + '%';
+        document.getElementById(sec.text).textContent = done + ' of ' + total;
+        break;
+      }
+    }
+  }
+</script>
+</body>
+</html>
